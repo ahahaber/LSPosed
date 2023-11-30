@@ -1,12 +1,6 @@
 name: Core
 
 on:
-  workflow_dispatch:
-    inputs:
-      post_telegram:
-        description: 'Post to Telegram'
-        required: false
-        type: boolean
   push:
     branches: [ v192b ]
     tags: [ v* ]
@@ -76,7 +70,7 @@ jobs:
         run: |
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
-          echo 'org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8 -XX:+UseParallelGC' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8 -XX:+UseParallelGC' >> ~/.gradle/gradle.properties
           echo 'android.native.buildOutput=verbose' >> ~/.gradle/gradle.properties
           cd api
           ./gradlew publishToMavenLocal
@@ -91,26 +85,10 @@ jobs:
         if: success()
         id: prepareArtifact
         run: |
-          riruReleaseName=`ls magisk-loader/release/LSPosed-v*-riru-release.zip | awk -F '(/|.zip)' '{print $3}'` && echo "riruReleaseName=$riruReleaseName" >> $GITHUB_OUTPUT
-          riruDebugName=`ls magisk-loader/release/LSPosed-v*-riru-debug.zip | awk -F '(/|.zip)' '{print $3}'` && echo "riruDebugName=$riruDebugName" >> $GITHUB_OUTPUT
           zygiskReleaseName=`ls magisk-loader/release/LSPosed-v*-zygisk-release.zip | awk -F '(/|.zip)' '{print $3}'` && echo "zygiskReleaseName=$zygiskReleaseName" >> $GITHUB_OUTPUT
           zygiskDebugName=`ls magisk-loader/release/LSPosed-v*-zygisk-debug.zip | awk -F '(/|.zip)' '{print $3}'` && echo "zygiskDebugName=$zygiskDebugName" >> $GITHUB_OUTPUT
-          unzip magisk-loader/release/LSPosed-v*-riru-release.zip -d LSPosed-riru-release
-          unzip magisk-loader/release/LSPosed-v*-riru-debug.zip -d LSPosed-riru-debug
           unzip magisk-loader/release/LSPosed-v*-zygisk-release.zip -d LSPosed-zygisk-release
           unzip magisk-loader/release/LSPosed-v*-zygisk-debug.zip -d LSPosed-zygisk-debug
-
-      - name: Upload riru release
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ steps.prepareArtifact.outputs.riruReleaseName }}
-          path: "./LSPosed-riru-release/*"
-
-      - name: Upload riru debug
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ steps.prepareArtifact.outputs.riruDebugName }}
-          path: "./LSPosed-riru-debug/*"
 
       - name: Upload zygisk release
         uses: actions/upload-artifact@v3
@@ -137,21 +115,3 @@ jobs:
         with:
           name: symbols
           path: build/symbols
-
-      - name: Post to channel
-        if: ${{ success() && github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && github.ref_type != 'tag' && inputs.post_telegram != 'false' }}
-        env:
-          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
-          DISCUSSION_ID: ${{ secrets.DISCUSSION_ID }}
-          TOPIC_ID: ${{ secrets.TOPIC_ID }}
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-          COMMIT_URL: ${{ github.event.head_commit.url }}
-        run: |
-          if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
-            OUTPUT="magisk-loader/release/"
-            export riruRelease=$(find $OUTPUT -name "LSPosed-v*-riru-release.zip")
-            export riruDebug=$(find $OUTPUT -name "LSPosed-v*-riru-debug.zip")
-            export zygiskRelease=$(find $OUTPUT -name "LSPosed-v*-zygisk-release.zip")
-            export zygiskDebug=$(find $OUTPUT -name "LSPosed-v*-zygisk-debug.zip")
-          fi
