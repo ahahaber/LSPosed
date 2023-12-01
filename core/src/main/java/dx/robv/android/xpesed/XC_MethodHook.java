@@ -18,14 +18,14 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package de.robv.android.xposed;
+package dx.robv.android.xpesed;
 
 import java.lang.reflect.Executable;
 import java.lang.reflect.Member;
 import java.util.HashMap;
 
-import de.robv.android.xposed.callbacks.IXUnhook;
-import de.robv.android.xposed.callbacks.XCallback;
+import dx.robv.android.xpesed.callbacks.IXUnhook;
+import dx.robv.android.xpesed.callbacks.XCallback;
 
 /**
  * Callback class for method hooks.
@@ -203,7 +203,7 @@ public abstract class XC_MethodHook extends XCallback {
         @SuppressWarnings("deprecation")
         @Override
         public void unhook() {
-            XposedBridge.unhookMethod(hookMethod, XC_MethodHook.this);
+            XpesedBridge.unhookMethod(hookMethod, XC_MethodHook.this);
         }
 
     }

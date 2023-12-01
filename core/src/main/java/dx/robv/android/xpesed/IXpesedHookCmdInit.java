@@ -18,7 +18,7 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package de.robv.android.xposed;
+package dx.robv.android.xpesed;
 
 
 /**
@@ -27,7 +27,7 @@ package de.robv.android.xposed;
  * @hide Xposed no longer hooks command-line tools, therefore this interface shouldn't be
  * implemented anymore.
  */
-public interface IXposedHookCmdInit extends IXposedMod {
+public interface IXpesedHookCmdInit extends IXpesedMod {
     /**
      * Called very early during startup of a command-line tool.
      *

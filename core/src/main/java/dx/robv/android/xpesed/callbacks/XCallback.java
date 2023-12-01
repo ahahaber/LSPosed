@@ -18,7 +18,7 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package de.robv.android.xposed.callbacks;
+package dx.robv.android.xpesed.callbacks;
 
 import android.os.Bundle;
 
@@ -26,7 +26,7 @@ import org.lsposed.lspd.deopt.PrebuiltMethodsDeopter;
 
 import java.io.Serializable;
 
-import de.robv.android.xposed.XposedBridge;
+import dx.robv.android.xpesed.XpesedBridge;
 
 /**
  * Base class for Xposed callbacks.
@@ -147,7 +147,7 @@ abstract public class XCallback {
             try {
                 param.callbacks[i].call(param);
             } catch (Throwable t) {
-                XposedBridge.log(t);
+                XpesedBridge.log(t);
             }
         }
     }

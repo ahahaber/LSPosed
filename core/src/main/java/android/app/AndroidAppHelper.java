@@ -20,12 +20,12 @@
 
 package android.app;
 
-import static de.robv.android.xposed.XposedHelpers.findClass;
-import static de.robv.android.xposed.XposedHelpers.findFieldIfExists;
-import static de.robv.android.xposed.XposedHelpers.findMethodExactIfExists;
-import static de.robv.android.xposed.XposedHelpers.getObjectField;
-import static de.robv.android.xposed.XposedHelpers.newInstance;
-import static de.robv.android.xposed.XposedHelpers.setFloatField;
+import static dx.robv.android.xpesed.XpesedHelpers.findClass;
+import static dx.robv.android.xpesed.XpesedHelpers.findFieldIfExists;
+import static dx.robv.android.xpesed.XpesedHelpers.findMethodExactIfExists;
+import static dx.robv.android.xpesed.XpesedHelpers.getObjectField;
+import static dx.robv.android.xpesed.XpesedHelpers.newInstance;
+import static dx.robv.android.xpesed.XpesedHelpers.setFloatField;
 
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -37,8 +37,8 @@ import android.view.Display;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-import de.robv.android.xposed.XSharedPreferences;
-import de.robv.android.xposed.XposedBridge;
+import dx.robv.android.xpesed.XSharedPreferences;
+import dx.robv.android.xpesed.XpesedBridge;
 
 /**
  * Contains various methods for information about the current app.
@@ -71,7 +71,7 @@ public final class AndroidAppHelper {
 		try {
 			return newInstance(CLASS_RESOURCES_KEY, resDir, splitResDirs, overlayDirs, libDirs, displayId, overrideConfiguration, compatInfo);
 		} catch (Throwable t) {
-			XposedBridge.log(t);
+			XpesedBridge.log(t);
 			return null;
 		}
 	}
