@@ -65,8 +65,8 @@ import dx.robv.android.xpesed.XpesedBridge.CopyOnWriteSortedSet;
 import dx.robv.android.xpesed.callbacks.XC_LayoutInflated;
 import dx.robv.android.xpesed.callbacks.XC_LayoutInflated.LayoutInflatedParam;
 import dx.robv.android.xpesed.callbacks.XCallback;
-import xposed.dummy.XResourcesSuperClass;
-import xposed.dummy.XTypedArraySuperClass;
+import xpesed.dummy.XResourcesSuperClass;
+import xpesed.dummy.XTypedArraySuperClass;
 
 /**
  * {@link android.content.res.Resources} subclass that allows replacing individual resources.
