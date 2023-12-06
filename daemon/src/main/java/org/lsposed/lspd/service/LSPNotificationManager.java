@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import io.github.libxposed.service.IXposedScopeCallback;
+import io.github.libxpesed.service.IXpesedScopeCallback;
 
 public class LSPNotificationManager {
     static final String UPDATED_CHANNEL_ID = "lsposed_module_updated";
@@ -197,7 +197,7 @@ public class LSPNotificationManager {
         return PendingIntent.getBroadcast(new FakeContext(), 3, intent, flags);
     }
 
-    private static PendingIntent getModuleScopeIntent(String modulePackageName, int moduleUserId, String scopePackageName, String action, IXposedScopeCallback callback) {
+    private static PendingIntent getModuleScopeIntent(String modulePackageName, int moduleUserId, String scopePackageName, String action, IXpesedScopeCallback callback) {
         var intent = new Intent(moduleScope);
         intent.setPackage("android");
         intent.setData(new Uri.Builder().scheme("module").encodedAuthority(modulePackageName + ":" + moduleUserId).encodedPath(scopePackageName).appendQueryParameter("action", action).build());
@@ -262,7 +262,7 @@ public class LSPNotificationManager {
         }
     }
 
-    static void requestModuleScope(String modulePackageName, int moduleUserId, String scopePackageName, IXposedScopeCallback callback) {
+    static void requestModuleScope(String modulePackageName, int moduleUserId, String scopePackageName, IXpesedScopeCallback callback) {
         var context = new FakeContext();
         var userName = UserService.getUserName(moduleUserId);
         String title = context.getString(R.string.xposed_module_request_scope_title);

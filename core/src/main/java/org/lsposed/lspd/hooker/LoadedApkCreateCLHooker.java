@@ -48,14 +48,14 @@ import dx.robv.android.xpesed.XC_MethodReplacement;
 import dx.robv.android.xpesed.XpesedBridge;
 import dx.robv.android.xpesed.XpesedHelpers;
 import dx.robv.android.xpesed.callbacks.XC_LoadPackage;
-import io.github.libxposed.api.XposedInterface;
-import io.github.libxposed.api.XposedModuleInterface;
-import io.github.libxposed.api.annotations.AfterInvocation;
-import io.github.libxposed.api.annotations.XposedHooker;
+import io.github.libxpesed.api.XpesedInterface;
+import io.github.libxpesed.api.XpesedModuleInterface;
+import io.github.libxpesed.api.annotations.AfterInvocation;
+import io.github.libxpesed.api.annotations.XpesedHooker;
 
 @SuppressLint("BlockedPrivateApi")
-@XposedHooker
-public class LoadedApkCreateCLHooker implements XposedInterface.Hooker {
+@XpesedHooker
+public class LoadedApkCreateCLHooker implements XpesedInterface.Hooker {
     private final static Field defaultClassLoaderField;
 
     private final static Set<LoadedApk> loadedApks = ConcurrentHashMap.newKeySet();
@@ -77,7 +77,7 @@ public class LoadedApkCreateCLHooker implements XposedInterface.Hooker {
     }
 
     @AfterInvocation
-    public static void afterHookedMethod(XposedInterface.AfterHookCallback callback) {
+    public static void afterHookedMethod(XpesedInterface.AfterHookCallback callback) {
         LoadedApk loadedApk = (LoadedApk) callback.getThisObject();
 
         if (callback.getArgs()[0] != null || !loadedApks.contains(loadedApk)) {
@@ -129,7 +129,7 @@ public class LoadedApkCreateCLHooker implements XposedInterface.Hooker {
             Hookers.logD("Call handleLoadedPackage: packageName=" + lpparam.packageName + " processName=" + lpparam.processName + " isFirstPackage=" + isFirstPackage + " classLoader=" + lpparam.classLoader + " appInfo=" + lpparam.appInfo);
             XC_LoadPackage.callAll(lpparam);
 
-            LSPosedContext.callOnPackageLoaded(new XposedModuleInterface.PackageLoadedParam() {
+            LSPosedContext.callOnPackageLoaded(new XpesedModuleInterface.PackageLoadedParam() {
                 @NonNull
                 @Override
                 public String getPackageName() {

@@ -15,7 +15,7 @@ dependencyResolutionManagement {
         mavenCentral()
         mavenLocal {
             content {
-                includeGroup("io.github.libxposed")
+                includeGroup("io.github.libxpesed")
             }
         }
     }

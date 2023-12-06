@@ -44,7 +44,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 import dx.robv.android.xpesed.callbacks.XC_InitPackageResources;
 import dx.robv.android.xpesed.callbacks.XC_LoadPackage;
-import io.github.libxposed.api.XposedInterface;
+import io.github.libxpesed.api.XpesedInterface;
 
 /**
  * This class contains most of Xposed's central logic, such as initialization and callbacks used by
@@ -133,7 +133,7 @@ public final class XpesedBridge {
      * Returns the currently installed version of the Xposed framework.
      */
     public static int getXposedVersion() {
-        return XposedInterface.API;
+        return XpesedInterface.API;
     }
 
     /**

@@ -1,5 +1,5 @@
 -keep class dx.robv.android.xpesed.** {*;}
--keep class io.github.libxposed.** {*;}
+-keep class io.github.libxpesed.** {*;}
 -keepattributes RuntimeVisibleAnnotations
 -keep class android.** { *; }
 -keepclasseswithmembers,includedescriptorclasses class * {
@@ -11,9 +11,9 @@
 -keepclassmembers class org.lsposed.lspd.impl.LSPosedHookCallback {
     public <methods>;
 }
--keep,allowoptimization,allowobfuscation @io.github.libxposed.api.annotations.* class * {
-    @io.github.libxposed.api.annotations.BeforeInvocation <methods>;
-    @io.github.libxposed.api.annotations.AfterInvocation <methods>;
+-keep,allowoptimization,allowobfuscation @io.github.libxpesed.api.annotations.* class * {
+    @io.github.libxpesed.api.annotations.BeforeInvocation <methods>;
+    @io.github.libxpesed.api.annotations.AfterInvocation <methods>;
 }
 -keepclassmembers class org.lsposed.lspd.impl.LSPosedBridge$NativeHooker {
     <init>(java.lang.reflect.Executable);

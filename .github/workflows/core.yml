@@ -37,7 +37,7 @@ jobs:
       - name: Checkout libxposed/api
         uses: actions/checkout@v3
         with:
-          repository: libxposed/api
+          repository: ahahaber/lsposedapi
           path: libxposed/api
 
       - name: Checkout libxposed/service

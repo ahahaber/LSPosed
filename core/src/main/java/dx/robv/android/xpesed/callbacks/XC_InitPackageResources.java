@@ -24,7 +24,7 @@ import android.content.res.XResources;
 
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import io.github.libxposed.api.XposedModuleInterface;
+import io.github.libxpesed.api.XpesedModuleInterface;
 
 /**
  * This class is only used for internal purposes, except for the {@link InitPackageResourcesParam}

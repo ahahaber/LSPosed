@@ -26,13 +26,13 @@ import org.lsposed.lspd.deopt.PrebuiltMethodsDeopter;
 import org.lsposed.lspd.impl.LSPosedHelper;
 import org.lsposed.lspd.util.Hookers;
 
-import io.github.libxposed.api.XposedInterface;
-import io.github.libxposed.api.annotations.AfterInvocation;
-import io.github.libxposed.api.annotations.XposedHooker;
+import io.github.libxpesed.api.XpesedInterface;
+import io.github.libxpesed.api.annotations.AfterInvocation;
+import io.github.libxpesed.api.annotations.XpesedHooker;
 
 // system_server initialization
-@XposedHooker
-public class HandleSystemServerProcessHooker implements XposedInterface.Hooker {
+@XpesedHooker
+public class HandleSystemServerProcessHooker implements XpesedInterface.Hooker {
 
     public static volatile ClassLoader systemServerCL;
 

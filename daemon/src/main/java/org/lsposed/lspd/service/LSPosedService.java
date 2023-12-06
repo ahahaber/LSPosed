@@ -54,7 +54,7 @@ import java.util.function.Consumer;
 import java.util.zip.ZipFile;
 
 import hidden.HiddenApiBridge;
-import io.github.libxposed.service.IXposedScopeCallback;
+import io.github.libxpesed.service.IXpesedScopeCallback;
 
 public class LSPosedService extends ILSPosedService.Stub {
     private static final int AID_NOBODY = 9999;
@@ -133,7 +133,7 @@ public class LSPosedService extends ILSPosedService.Stub {
             }
         }
 
-        boolean isXposedModule = applicationInfo != null && ((applicationInfo.metaData != null && applicationInfo.metaData.containsKey("xposedminversion")) || isModernModules(applicationInfo));
+        boolean isXpesedModule = applicationInfo != null && ((applicationInfo.metaData != null && applicationInfo.metaData.containsKey("xposedminversion")) || isModernModules(applicationInfo));
 
         switch (intentAction) {
             case Intent.ACTION_PACKAGE_FULLY_REMOVED -> {
@@ -141,7 +141,7 @@ public class LSPosedService extends ILSPosedService.Stub {
                 // because we only care about when the apk is gone
                 if (moduleName != null) {
                     if (allUsers && ConfigManager.getInstance().removeModule(moduleName)) {
-                        isXposedModule = true;
+                        isXpesedModule = true;
                         broadcastAndShowNotification(moduleName, userId, intent, true);
                     }
                     LSPNotificationManager.cancelNotification(UPDATED_CHANNEL_ID, moduleName, userId);
@@ -159,23 +159,23 @@ public class LSPosedService extends ILSPosedService.Stub {
                 if (components != null && !Arrays.stream(components).reduce(false, (p, c) -> p || c.equals(moduleName), Boolean::logicalOr)) {
                     return;
                 }
-                if (isXposedModule) {
+                if (isXpesedModule) {
                     // When installing a new Xposed module, we update the apk path to mark it as a
                     // module to send a broadcast when modules that have not been activated are
                     // uninstalled.
                     // If cache not updated, assume it's not xposed module
-                    isXposedModule = ConfigManager.getInstance().updateModuleApkPath(moduleName, ConfigManager.getInstance().getModuleApkPath(applicationInfo), false);
+                    isXpesedModule = ConfigManager.getInstance().updateModuleApkPath(moduleName, ConfigManager.getInstance().getModuleApkPath(applicationInfo), false);
                 } else if (ConfigManager.getInstance().isUidHooked(uid)) {
                     // it will auto update obsolete scope from database
                     ConfigManager.getInstance().updateAppCache();
                 }
-                broadcastAndShowNotification(moduleName, userId, intent, isXposedModule);
+                broadcastAndShowNotification(moduleName, userId, intent, isXpesedModule);
             }
             case Intent.ACTION_UID_REMOVED -> {
                 // when a package is removed (rather than hide) for a single user
                 // (apk may still be there because of multi-user)
-                broadcastAndShowNotification(moduleName, userId, intent, isXposedModule);
-                if (isXposedModule) {
+                broadcastAndShowNotification(moduleName, userId, intent, isXpesedModule);
+                if (isXpesedModule) {
                     // it will auto remove obsolete app and scope from database
                     ConfigManager.getInstance().updateCache();
                 } else if (ConfigManager.getInstance().isUidHooked(uid)) {
@@ -186,7 +186,7 @@ public class LSPosedService extends ILSPosedService.Stub {
         }
         boolean removed = Intent.ACTION_PACKAGE_FULLY_REMOVED.equals(intentAction) || Intent.ACTION_UID_REMOVED.equals(intentAction);
 
-        Log.d(TAG, "Package changed: uid=" + uid + " userId=" + userId + " action=" + intentAction + " isXposedModule=" + isXposedModule + " isAllUsers=" + allUsers);
+        Log.d(TAG, "Package changed: uid=" + uid + " userId=" + userId + " action=" + intentAction + " isXpesedModule=" + isXpesedModule + " isAllUsers=" + allUsers);
 
         if (BuildConfig.DEFAULT_MANAGER_PACKAGE_NAME.equals(moduleName) && userId == 0) {
             Log.d(TAG, "Manager updated");
@@ -194,15 +194,15 @@ public class LSPosedService extends ILSPosedService.Stub {
         }
     }
 
-    private void broadcastAndShowNotification(String packageName, int userId, Intent intent, boolean isXposedModule) {
+    private void broadcastAndShowNotification(String packageName, int userId, Intent intent, boolean isXpesedModule) {
         Log.d(TAG, "package " + packageName + " changed, dispatching to manager");
         var action = intent.getAction();
         var allUsers = intent.getBooleanExtra(EXTRA_REMOVED_FOR_ALL_USERS, false);
         intent.putExtra("android.intent.extra.PACKAGES", packageName);
         intent.putExtra(Intent.EXTRA_USER, userId);
-        intent.putExtra("isXposedModule", isXposedModule);
+        intent.putExtra("isXpesedModule", isXpesedModule);
         LSPManagerService.broadcastIntent(intent);
-        if (isXposedModule) {
+        if (isXpesedModule) {
             var enabledModules = ConfigManager.getInstance().enabledModules();
             var scope = ConfigManager.getInstance().getModuleScope(packageName);
             boolean systemModule = scope != null && scope.parallelStream().anyMatch(app -> app.packageName.equals("system"));
@@ -278,7 +278,7 @@ public class LSPosedService extends ILSPosedService.Stub {
         var action = data.getQueryParameter("action");
         if (action == null) return;
 
-        var iCallback = IXposedScopeCallback.Stub.asInterface(callback);
+        var iCallback = IXpesedScopeCallback.Stub.asInterface(callback);
         try {
             var applicationInfo = PackageService.getApplicationInfo(scopePackageName, 0, userId);
             if (applicationInfo == null) {

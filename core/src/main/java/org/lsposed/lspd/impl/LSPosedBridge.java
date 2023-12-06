@@ -12,11 +12,11 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import dx.robv.android.xpesed.XpesedBridge;
-import io.github.libxposed.api.XposedInterface;
-import io.github.libxposed.api.annotations.AfterInvocation;
-import io.github.libxposed.api.annotations.BeforeInvocation;
-import io.github.libxposed.api.annotations.XposedHooker;
-import io.github.libxposed.api.errors.HookFailedError;
+import io.github.libxpesed.api.XpesedInterface;
+import io.github.libxpesed.api.annotations.AfterInvocation;
+import io.github.libxpesed.api.annotations.BeforeInvocation;
+import io.github.libxpesed.api.annotations.XpesedHooker;
+import io.github.libxpesed.api.errors.HookFailedError;
 
 public class LSPosedBridge {
 
@@ -209,8 +209,8 @@ public class LSPosedBridge {
     public static void dummyCallback() {
     }
 
-    public static <T extends Executable> XposedInterface.MethodUnhooker<T>
-    doHook(T hookMethod, int priority, Class<? extends XposedInterface.Hooker> hooker) {
+    public static <T extends Executable> XpesedInterface.MethodUnhooker<T>
+    doHook(T hookMethod, int priority, Class<? extends XpesedInterface.Hooker> hooker) {
         if (Modifier.isAbstract(hookMethod.getModifiers())) {
             throw new IllegalArgumentException("Cannot hook abstract methods: " + hookMethod);
         } else if (hookMethod.getDeclaringClass().getClassLoader() == LSPosedContext.class.getClassLoader()) {
@@ -219,8 +219,8 @@ public class LSPosedBridge {
             throw new IllegalArgumentException("Cannot hook Method.invoke");
         } else if (hooker == null) {
             throw new IllegalArgumentException("hooker should not be null!");
-        } else if (hooker.getAnnotation(XposedHooker.class) == null) {
-            throw new IllegalArgumentException("Hooker should be annotated with @XposedHooker");
+        } else if (hooker.getAnnotation(XpesedHooker.class) == null) {
+            throw new IllegalArgumentException("Hooker should be annotated with @XpesedHooker");
         }
 
         Method beforeInvocation = null, afterInvocation = null;
@@ -233,7 +233,7 @@ public class LSPosedBridge {
                 boolean valid = (method.getModifiers() & modifiers) == modifiers;
                 var params = method.getParameterTypes();
                 if (params.length == 1) {
-                    valid &= params[0].equals(XposedInterface.BeforeHookCallback.class);
+                    valid &= params[0].equals(XpesedInterface.BeforeHookCallback.class);
                 } else if (params.length != 0) {
                     valid = false;
                 }
@@ -250,7 +250,7 @@ public class LSPosedBridge {
                 valid &= method.getReturnType().equals(void.class);
                 var params = method.getParameterTypes();
                 if (params.length == 1 || params.length == 2) {
-                    valid &= params[0].equals(XposedInterface.AfterHookCallback.class);
+                    valid &= params[0].equals(XpesedInterface.AfterHookCallback.class);
                 } else if (params.length != 0) {
                     valid = false;
                 }
@@ -281,7 +281,7 @@ public class LSPosedBridge {
 
         var callback = new LSPosedBridge.HookerCallback(beforeInvocation, afterInvocation);
         if (HookBridge.hookMethod(true, hookMethod, LSPosedBridge.NativeHooker.class, priority, callback)) {
-            return new XposedInterface.MethodUnhooker<>() {
+            return new XpesedInterface.MethodUnhooker<>() {
                 @NonNull
                 @Override
                 public T getOrigin() {

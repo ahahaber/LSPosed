@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import io.github.libxposed.service.IXposedService;
+import io.github.libxpesed.service.IXpesedService;
 
 public class LSPInjectedModuleService extends ILSPInjectedModuleService.Stub {
 
@@ -31,7 +31,7 @@ public class LSPInjectedModuleService extends ILSPInjectedModuleService.Stub {
 
     @Override
     public int getFrameworkPrivilege() {
-        return IXposedService.FRAMEWORK_PRIVILEGE_ROOT;
+        return IXpesedService.FRAMEWORK_PRIVILEGE_ROOT;
     }
 
     @Override

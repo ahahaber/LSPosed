@@ -230,9 +230,9 @@ public class App extends Application {
                         var userId = intent.getIntExtra(Intent.EXTRA_USER, 0);
                         var packageName = intent.getStringExtra("android.intent.extra.PACKAGES");
                         var packageRemovedForAllUsers = intent.getBooleanExtra(EXTRA_REMOVED_FOR_ALL_USERS, false);
-                        var isXposedModule = intent.getBooleanExtra("isXposedModule", false);
+                        var isXpesedModule = intent.getBooleanExtra("isXpesedModule", false);
                         if (packageName != null) {
-                            if (isXposedModule)
+                            if (isXpesedModule)
                                 ModuleUtil.getInstance().reloadSingleModule(packageName, userId, packageRemovedForAllUsers);
                             else
                                 App.getExecutorService().submit(() -> AppHelper.getAppList(true));
