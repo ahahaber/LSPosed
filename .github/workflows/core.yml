@@ -101,17 +101,3 @@ jobs:
         with:
           name: ${{ steps.prepareArtifact.outputs.zygiskDebugName }}
           path: "./LSPosed-zygisk-debug/*"
-
-      - name: Upload mappings
-        uses: actions/upload-artifact@v3
-        with:
-          name: mappings
-          path: |
-            magisk-loader/build/outputs/mapping
-            app/build/outputs/mapping
-
-      - name: Upload symbols
-        uses: actions/upload-artifact@v3
-        with:
-          name: symbols
-          path: build/symbols
