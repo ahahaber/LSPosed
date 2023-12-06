@@ -43,7 +43,7 @@ jobs:
       - name: Checkout libxposed/service
         uses: actions/checkout@v3
         with:
-          repository: libxposed/service
+          repository: ahahaber/service
           path: libxposed/service
 
       - name: Setup Java
