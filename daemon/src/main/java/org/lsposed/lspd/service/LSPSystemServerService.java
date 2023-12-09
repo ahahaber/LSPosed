@@ -133,6 +133,7 @@ public class LSPSystemServerService extends ILSPSystemServerService.Stub impleme
         if (originService != null) {
             originService.unlinkToDeath(this, 0);
             originService = null;
+            Log.e(TAG, "system server service: binder died");
         }
     }
 

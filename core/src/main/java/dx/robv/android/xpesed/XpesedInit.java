@@ -231,6 +231,7 @@ public final class XpesedInit {
             var file = module.file;
             loadedModules.put(name, Optional.of(apk)); // temporarily add it for XSharedPreference
             if (!loadModule(name, apk, file)) {
+                Log.e(TAG, "remove legacy module " + name + "  " + apk + " error");
                 loadedModules.remove(name);
             }
         });
@@ -316,7 +317,7 @@ public final class XpesedInit {
         try {
             if (mcl.loadClass(XpesedBridge.class.getName()).getClassLoader() != initLoader) {
                 Log.e(TAG, "  Cannot load module: " + name);
-                Log.e(TAG, "  The Xposed API classes are compiled into the module's APK.");
+                Log.e(TAG, "  The Xpesed API classes are compiled into the module's APK.");
                 Log.e(TAG, "  This may cause strange issues and must be fixed by the module developer.");
                 Log.e(TAG, "  For details, see: https://api.xposed.info/using.html");
                 return false;

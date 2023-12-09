@@ -112,6 +112,7 @@ public class LSPApplicationService extends ILSPApplicationService.Stub {
             new ProcessInfo(uid, pid, processName, heartBeat);
             return true;
         } catch (RemoteException e) {
+            Log.e(TAG, "registerHeartBeat", e);
             return false;
         }
     }
@@ -164,7 +165,7 @@ public class LSPApplicationService extends ILSPApplicationService.Stub {
         ProcessInfo processInfo = processes.getOrDefault(key, null);
         if (processInfo == null || uid != processInfo.uid || pid != processInfo.pid) {
             processes.remove(key, processInfo);
-            Log.w(TAG, "non-authorized: info=" + processInfo + " uid=" + uid + " pid=" + pid);
+            Log.e(TAG, "non-authorized: info=" + processInfo + " uid=" + uid + " pid=" + pid);
             throw new RemoteException("Not registered");
         }
         return processInfo;
