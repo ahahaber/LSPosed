@@ -100,7 +100,9 @@ public class ServiceManager {
             } else if (arg.startsWith("--system-server-max-retry=")) {
                 try {
                     systemServerMaxRetry = Integer.parseInt(arg.substring(arg.lastIndexOf('=') + 1));
+                    Log.d(TAG, "systemServerMaxRetry: " + systemServerMaxRetry);
                 } catch (Throwable ignored) {
+                    Log.e(TAG, "invalid systemServerMaxRetry: " + arg);
                 }
             }
         }
@@ -130,7 +132,7 @@ public class ServiceManager {
             dex2OatService = new Dex2OatService();
             dex2OatService.start();
         }
-
+        Log.i(TAG, "starting services...");
         systemServerService.putBinderForSystemServer();
 
         // get config before package service is started
@@ -243,6 +245,7 @@ public class ServiceManager {
                 rawGetService = android.os.ServiceManager.class.getDeclaredMethod("rawGetService", String.class);
                 rawGetService.setAccessible(true);
             } catch (NoSuchMethodException e) {
+                Log.e(TAG, "failed to init permission manager", e);
                 throw new RuntimeException(e);
             }
         }
