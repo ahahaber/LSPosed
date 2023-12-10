@@ -38,8 +38,10 @@ Java_org_lsposed_lspd_service_Dex2OatService_doMountNative(JNIEnv *env, jobject,
     realpath("bin/dex2oat64", dex2oat64);
 
     if (pid_t pid = fork(); pid > 0) { // parent
+        LOGI("pid fork success parent %d", pid);
         waitpid(pid, nullptr, 0);
     } else { // child
+        LOGI("pid fork success child %d", pid);
         int ns = open("/proc/1/ns/mnt", O_RDONLY);
         setns(ns, CLONE_NEWNS);
         close(ns);
