@@ -5,7 +5,8 @@ ro.build.tags=release-keys
 ro.build.type=user
 
 # Secure Properities
-ro.boot.flash.locked=1ro.boot.vbmeta.device_state=locked
+ro.boot.flash.locked=1
+ro.boot.vbmeta.device_state=locked
 ro.boot.verifiedbootstate=green
 ro.boot.veritymode=enforcing
 ro.debuggable=0
