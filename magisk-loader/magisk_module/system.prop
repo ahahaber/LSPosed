@@ -26,7 +26,4 @@ ro.boot.mode=unknown
 
 vendor.boot.mode=unknown
 
-# Debug
-ro.debuggable=0
-ro.secure=1
 
