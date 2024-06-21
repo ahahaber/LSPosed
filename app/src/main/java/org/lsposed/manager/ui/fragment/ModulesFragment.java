@@ -271,7 +271,8 @@ public class ModulesFragment extends BaseFragment implements ModuleUtil.ModuleLi
         var moduleCount = moduleUtil.getEnabledModulesCount();
         runOnUiThread(() -> {
             if (binding != null) {
-                binding.toolbar.setSubtitle(moduleCount == -1 ? getString(R.string.loading) : getResources().getQuantityString(R.plurals.modules_enabled_count, moduleCount, moduleCount));
+                binding.toolbar.setSubtitle(moduleCount == -1 ? getString(R.string.loading) :
+                        getResources().getQuantityString(R.plurals.modules_enabled_count, moduleCount, moduleCount));
                 binding.toolbarLayout.setSubtitle(binding.toolbar.getSubtitle());
             }
         });

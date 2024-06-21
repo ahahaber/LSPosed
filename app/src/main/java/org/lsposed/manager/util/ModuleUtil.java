@@ -119,7 +119,7 @@ public final class ModuleUtil {
     }
 
     public static boolean isLegacyModule(ApplicationInfo info) {
-        return info.metaData != null && info.metaData.containsKey("xposedminversion");
+        return info.metaData != null && info.metaData.containsKey("xpesedminversion");
     }
 
     synchronized public void reloadInstalledModules() {
