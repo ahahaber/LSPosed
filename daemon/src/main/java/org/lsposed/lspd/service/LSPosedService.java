@@ -133,7 +133,7 @@ public class LSPosedService extends ILSPosedService.Stub {
             }
         }
 
-        boolean isXpesedModule = applicationInfo != null && ((applicationInfo.metaData != null && applicationInfo.metaData.containsKey("xposedminversion")) || isModernModules(applicationInfo));
+        boolean isXpesedModule = applicationInfo != null && ((applicationInfo.metaData != null && applicationInfo.metaData.containsKey("xpesedminversion")) || isModernModules(applicationInfo));
 
         switch (intentAction) {
             case Intent.ACTION_PACKAGE_FULLY_REMOVED -> {

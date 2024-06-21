@@ -69,7 +69,7 @@ public class Startup {
             startBootstrapHook(dx.robv.android.xpesed.XpesedInit.startsSystemServer);
             dx.robv.android.xpesed.XpesedInit.loadLegacyModules();
         } catch (Throwable t) {
-            Utils.logE("error during Xposed initialization", t);
+            Utils.logE("error during Xpesed initialization", t);
         }
     }
 
