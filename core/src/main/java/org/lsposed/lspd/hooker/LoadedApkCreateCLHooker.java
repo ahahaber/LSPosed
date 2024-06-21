@@ -175,13 +175,13 @@ public class LoadedApkCreateCLHooker implements XpesedInterface.Hooker {
         boolean xposedsharedprefs = false;
         try {
             Map<String, Object> metaData = MetaDataReader.getMetaData(new File(lpparam.appInfo.sourceDir));
-            Object minVersionRaw = metaData.get("xposedminversion");
+            Object minVersionRaw = metaData.get("xpesedminversion");
             if (minVersionRaw instanceof Integer) {
                 xposedminversion = (Integer) minVersionRaw;
             } else if (minVersionRaw instanceof String) {
                 xposedminversion = MetaDataReader.extractIntPart((String) minVersionRaw);
             }
-            xposedsharedprefs = metaData.containsKey("xposedsharedprefs");
+            xposedsharedprefs = metaData.containsKey("xpesedsharedprefs");
         } catch (NumberFormatException | IOException e) {
             Hookers.logE("ApkParser fails", e);
         }

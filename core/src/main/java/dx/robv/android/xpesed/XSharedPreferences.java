@@ -168,15 +168,15 @@ public final class XSharedPreferences implements SharedPreferences {
             boolean xposedsharedprefs = false;
             try {
                 Map<String, Object> metaData = MetaDataReader.getMetaData(new File(m.get()));
-                isModule = metaData.containsKey("xposedminversion");
+                isModule = metaData.containsKey("xpesedminversion");
                 if (isModule) {
-                    Object minVersionRaw = metaData.get("xposedminversion");
+                    Object minVersionRaw = metaData.get("xpesedminversion");
                     if (minVersionRaw instanceof Integer) {
                         xposedminversion = (Integer) minVersionRaw;
                     } else if (minVersionRaw instanceof String) {
                         xposedminversion = MetaDataReader.extractIntPart((String) minVersionRaw);
                     }
-                    xposedsharedprefs = metaData.containsKey("xposedsharedprefs");
+                    xposedsharedprefs = metaData.containsKey("xpesedsharedprefs");
                 }
             } catch (NumberFormatException | IOException e) {
                 Log.w(TAG, "Apk parser fails: " + e);
