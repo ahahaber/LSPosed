@@ -77,7 +77,7 @@ public class Startup {
         // init logger
         ApplicationServiceClient.Init(service, processName);
         XpesedBridge.initXResources();
-        dx.robv.android.xpesed.XpesedInit.startsSystemServer = isSystem;
+        dx.robv.android.xpesed.XpesedInit.startsSystemServer = isSystem; // xpesedInit在这里就加载了，跟Main是同一个ClassLoader
         LSPosedContext.isSystemServer = isSystem;
         LSPosedContext.appDir = appDir;
         LSPosedContext.processName = processName;

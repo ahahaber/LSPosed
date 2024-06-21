@@ -389,7 +389,13 @@ public class ConfigFileManager {
             if (moduleClassNames.isEmpty()) {
                 file.legacy = true;
                 readName(apkFile, "assets/xposed_init", moduleClassNames);
+                if (moduleClassNames.isEmpty()) {
+                    readName(apkFile, "assets/xpesed_init", moduleClassNames);
+                }
                 readName(apkFile, "assets/native_init", moduleLibraryNames);
+                if (moduleLibraryNames.isEmpty()) {
+                    readName(apkFile, "assets/xpesed_native_init", moduleLibraryNames);
+                }
             } else {
                 file.legacy = false;
                 readName(apkFile, "META-INF/xpesed/native_init.list", moduleLibraryNames);

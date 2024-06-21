@@ -29,7 +29,7 @@ import org.lsposed.lspd.BuildConfig;
 
 public class Main {
 
-    public static void forkCommon(boolean isSystem, String niceName, String appDir, IBinder binder) {
+    public static void forkCommon(boolean isSystem, String niceName, String appDir, IBinder binder) { // 这是lsposed的入口类
         Startup.initXposed(isSystem, niceName, appDir, ILSPApplicationService.Stub.asInterface(binder));
         if ((niceName.equals(BuildConfig.MANAGER_INJECTED_PKG_NAME) || niceName.equals(BuildConfig.DEFAULT_MANAGER_PACKAGE_NAME))
                 && ParasiticManagerHooker.start()) {

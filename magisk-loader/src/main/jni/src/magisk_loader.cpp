@@ -212,7 +212,7 @@ namespace lspd {
             auto [dex_fd, size] = instance->RequestLSPDex(env, binder);
             auto obfs_map = instance->RequestObfuscationMap(env, binder);
             ConfigBridge::GetInstance()->obfuscation_map(std::move(obfs_map));
-            LoadDex(env, PreloadedDex(dex_fd, size));
+            LoadDex(env, PreloadedDex(dex_fd, size));// 这一行里面保存了加载入口class的classloader
             close(dex_fd);
             InitArtHooker(env, initInfo);
             InitHooks(env);
