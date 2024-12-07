@@ -18,14 +18,14 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed.services;
+package dx.rxbv.android.xpesed.services;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import dx.robv.android.xpesed.SELinuxHelper;
+import dx.rxbv.android.xpesed.SELinuxHelper;
 
 /**
  * General definition of a file access service provided by the Xposed framework.

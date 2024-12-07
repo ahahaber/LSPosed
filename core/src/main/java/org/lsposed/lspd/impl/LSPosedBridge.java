@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-import dx.robv.android.xpesed.XpesedBridge;
+import dx.rxbv.android.xpesed.XpesedBridge;
 import io.github.libxpesed.api.XpesedInterface;
 import io.github.libxpesed.api.annotations.AfterInvocation;
 import io.github.libxpesed.api.annotations.BeforeInvocation;
@@ -20,7 +20,7 @@ import io.github.libxpesed.api.errors.HookFailedError;
 
 public class LSPosedBridge {
 
-    private static final String TAG = "LSPosed-Bridge";
+    private static final String TAG = "LSPesed-Bridge";
 
     private static final String castException = "Return value's type from hook callback does not match the hooked method";
 

@@ -42,7 +42,7 @@ import org.lsposed.lspd.util.Utils;
 import java.util.List;
 
 import dalvik.system.DexFile;
-import dx.robv.android.xpesed.XpesedBridge;
+import dx.rxbv.android.xpesed.XpesedBridge;
 
 public class Startup {
     private static void startBootstrapHook(boolean isSystem) {
@@ -66,8 +66,8 @@ public class Startup {
     public static void bootstrapXposed() {
         // Initialize the Xposed framework
         try {
-            startBootstrapHook(dx.robv.android.xpesed.XpesedInit.startsSystemServer);
-            dx.robv.android.xpesed.XpesedInit.loadLegacyModules();
+            startBootstrapHook(dx.rxbv.android.xpesed.XpesedInit.startsSystemServer);
+            dx.rxbv.android.xpesed.XpesedInit.loadLegacyModules();
         } catch (Throwable t) {
             Utils.logE("error during Xpesed initialization", t);
         }
@@ -77,7 +77,7 @@ public class Startup {
         // init logger
         ApplicationServiceClient.Init(service, processName);
         XpesedBridge.initXResources();
-        dx.robv.android.xpesed.XpesedInit.startsSystemServer = isSystem; // xpesedInit在这里就加载了，跟Main是同一个ClassLoader
+        dx.rxbv.android.xpesed.XpesedInit.startsSystemServer = isSystem; // xpesedInit在这里就加载了，跟Main是同一个ClassLoader
         LSPosedContext.isSystemServer = isSystem;
         LSPosedContext.appDir = appDir;
         LSPosedContext.processName = processName;

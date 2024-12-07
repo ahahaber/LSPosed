@@ -11,6 +11,6 @@ public class AttachHooker implements XpesedInterface.Hooker {
 
     @AfterInvocation
     public static void afterHookedMethod(XpesedInterface.AfterHookCallback callback) {
-        dx.robv.android.xpesed.XpesedInit.loadModules((ActivityThread) callback.getThisObject());
+        dx.rxbv.android.xpesed.XpesedInit.loadModules((ActivityThread) callback.getThisObject());
     }
 }

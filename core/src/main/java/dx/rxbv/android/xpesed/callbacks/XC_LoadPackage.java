@@ -18,26 +18,26 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed.callbacks;
+package dx.rxbv.android.xpesed.callbacks;
 
-import android.content.res.XResources;
+import android.content.pm.ApplicationInfo;
 
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import io.github.libxpesed.api.XpesedModuleInterface;
 
 /**
- * This class is only used for internal purposes, except for the {@link InitPackageResourcesParam}
+ * This class is only used for internal purposes, except for the {@link LoadPackageParam}
  * subclass.
  */
-public abstract class XC_InitPackageResources extends XCallback implements dx.robv.android.xpesed.IXpesedHookInitPackageResources {
+public abstract class XC_LoadPackage extends XCallback implements dx.rxbv.android.xpesed.IXpesedHookLoadPackage {
     /**
      * Creates a new callback with default priority.
      *
      * @hide
      */
     @SuppressWarnings("deprecation")
-    public XC_InitPackageResources() {
+    public XC_LoadPackage() {
         super();
     }
 
@@ -47,31 +47,45 @@ public abstract class XC_InitPackageResources extends XCallback implements dx.ro
      * @param priority See {@link XCallback#priority}.
      * @hide
      */
-    public XC_InitPackageResources(int priority) {
+    public XC_LoadPackage(int priority) {
         super(priority);
     }
 
     /**
-     * Wraps information about the resources being initialized.
+     * Wraps information about the app being loaded.
      */
-    public static final class InitPackageResourcesParam extends XCallback.Param {
+    public static final class LoadPackageParam extends XCallback.Param {
         /**
          * @hide
          */
-        public InitPackageResourcesParam(CopyOnWriteArraySet<XC_InitPackageResources> callbacks) {
+        public LoadPackageParam(CopyOnWriteArraySet<XC_LoadPackage> callbacks) {
             super(callbacks.toArray(new XCallback[0]));
         }
 
         /**
-         * The name of the package for which resources are being loaded.
+         * The name of the package being loaded.
          */
         public String packageName;
 
         /**
-         * Reference to the resources that can be used for calls to
-         * {@link XResources#setReplacement(String, String, String, Object)}.
+         * The process in which the package is executed.
          */
-        public XResources res;
+        public String processName;
+
+        /**
+         * The ClassLoader used for this package.
+         */
+        public ClassLoader classLoader;
+
+        /**
+         * More information about the application being loaded.
+         */
+        public ApplicationInfo appInfo;
+
+        /**
+         * Set to {@code true} if this is the first (and main) application for this process.
+         */
+        public boolean isFirstApplication;
     }
 
     /**
@@ -79,7 +93,7 @@ public abstract class XC_InitPackageResources extends XCallback implements dx.ro
      */
     @Override
     protected void call(Param param) throws Throwable {
-        if (param instanceof InitPackageResourcesParam)
-            handleInitPackageResources((InitPackageResourcesParam) param);
+        if (param instanceof LoadPackageParam)
+            handleLoadPackage((LoadPackageParam) param);
     }
 }

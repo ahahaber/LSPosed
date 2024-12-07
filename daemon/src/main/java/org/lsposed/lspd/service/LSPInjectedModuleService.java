@@ -19,7 +19,7 @@ import io.github.libxpesed.service.IXpesedService;
 
 public class LSPInjectedModuleService extends ILSPInjectedModuleService.Stub {
 
-    private static final String TAG = "LSPosedInjectedModuleService";
+    private static final String TAG = "LSPesedInjectedModuleService";
 
     private final String mPackageName;
 

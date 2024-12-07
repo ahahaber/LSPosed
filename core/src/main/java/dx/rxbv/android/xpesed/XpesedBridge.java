@@ -18,7 +18,7 @@
  * Copyright (C) 2021 - 2022 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 import android.app.ActivityThread;
 import android.content.res.Resources;
@@ -42,8 +42,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import dx.robv.android.xpesed.callbacks.XC_InitPackageResources;
-import dx.robv.android.xpesed.callbacks.XC_LoadPackage;
+import dx.rxbv.android.xpesed.callbacks.XC_InitPackageResources;
+import dx.rxbv.android.xpesed.callbacks.XC_LoadPackage;
 import io.github.libxpesed.api.XpesedInterface;
 
 /**
@@ -125,7 +125,7 @@ public final class XpesedBridge {
             XpesedHelpers.setObjectField(myCL, "parent", dummyClassLoader);
         } catch (Throwable throwable) {
             XpesedBridge.log(throwable);
-            dx.robv.android.xpesed.XpesedInit.disableResources = true;
+            dx.rxbv.android.xpesed.XpesedInit.disableResources = true;
         }
     }
 
@@ -267,7 +267,7 @@ public final class XpesedBridge {
     /**
      * Adds a callback to be executed when an app ("Android package") is loaded.
      *
-     * <p class="note">You probably don't need to call this. Simply implement {@link dx.robv.android.xpesed.IXpesedHookLoadPackage}
+     * <p class="note">You probably don't need to call this. Simply implement {@link dx.rxbv.android.xpesed.IXpesedHookLoadPackage}
      * in your module class and Xposed will take care of registering it as a callback.
      *
      * @param callback The callback to be executed.
@@ -282,7 +282,7 @@ public final class XpesedBridge {
     /**
      * Adds a callback to be executed when the resources for an app are initialized.
      *
-     * <p class="note">You probably don't need to call this. Simply implement {@link dx.robv.android.xpesed.IXpesedHookInitPackageResources}
+     * <p class="note">You probably don't need to call this. Simply implement {@link dx.rxbv.android.xpesed.IXpesedHookInitPackageResources}
      * in your module class and Xposed will take care of registering it as a callback.
      *
      * @param callback The callback to be executed.

@@ -27,8 +27,8 @@ import androidx.annotation.NonNull;
 import org.lsposed.lspd.impl.LSPosedContext;
 import org.lsposed.lspd.util.Hookers;
 
-import dx.robv.android.xpesed.XpesedBridge;
-import dx.robv.android.xpesed.callbacks.XC_LoadPackage;
+import dx.rxbv.android.xpesed.XpesedBridge;
+import dx.rxbv.android.xpesed.callbacks.XC_LoadPackage;
 import io.github.libxpesed.api.XpesedInterface;
 import io.github.libxpesed.api.XpesedModuleInterface;
 import io.github.libxpesed.api.annotations.BeforeInvocation;
@@ -42,7 +42,7 @@ public class StartBootstrapServicesHooker implements XpesedInterface.Hooker {
         logD("SystemServer#startBootstrapServices() starts");
 
         try {
-            dx.robv.android.xpesed.XpesedInit.loadedPackagesInProcess.add("android");
+            dx.rxbv.android.xpesed.XpesedInit.loadedPackagesInProcess.add("android");
 
             XC_LoadPackage.LoadPackageParam lpparam = new XC_LoadPackage.LoadPackageParam(XpesedBridge.sLoadedPackageCallbacks);
             lpparam.packageName = "android";

@@ -20,12 +20,12 @@
 
 package android.app;
 
-import static dx.robv.android.xpesed.XpesedHelpers.findClass;
-import static dx.robv.android.xpesed.XpesedHelpers.findFieldIfExists;
-import static dx.robv.android.xpesed.XpesedHelpers.findMethodExactIfExists;
-import static dx.robv.android.xpesed.XpesedHelpers.getObjectField;
-import static dx.robv.android.xpesed.XpesedHelpers.newInstance;
-import static dx.robv.android.xpesed.XpesedHelpers.setFloatField;
+import static dx.rxbv.android.xpesed.XpesedHelpers.findClass;
+import static dx.rxbv.android.xpesed.XpesedHelpers.findFieldIfExists;
+import static dx.rxbv.android.xpesed.XpesedHelpers.findMethodExactIfExists;
+import static dx.rxbv.android.xpesed.XpesedHelpers.getObjectField;
+import static dx.rxbv.android.xpesed.XpesedHelpers.newInstance;
+import static dx.rxbv.android.xpesed.XpesedHelpers.setFloatField;
 
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -37,8 +37,8 @@ import android.view.Display;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-import dx.robv.android.xpesed.XSharedPreferences;
-import dx.robv.android.xpesed.XpesedBridge;
+import dx.rxbv.android.xpesed.XSharedPreferences;
+import dx.rxbv.android.xpesed.XpesedBridge;
 
 /**
  * Contains various methods for information about the current app.

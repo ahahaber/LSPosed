@@ -21,12 +21,12 @@
 package android.content.res;
 
 import static org.lsposed.lspd.nativebridge.ResourcesHook.rewriteXmlReferencesNative;
-import static dx.robv.android.xpesed.XpesedHelpers.decrementMethodDepth;
-import static dx.robv.android.xpesed.XpesedHelpers.findAndHookMethod;
-import static dx.robv.android.xpesed.XpesedHelpers.getBooleanField;
-import static dx.robv.android.xpesed.XpesedHelpers.getLongField;
-import static dx.robv.android.xpesed.XpesedHelpers.getObjectField;
-import static dx.robv.android.xpesed.XpesedHelpers.incrementMethodDepth;
+import static dx.rxbv.android.xpesed.XpesedHelpers.decrementMethodDepth;
+import static dx.rxbv.android.xpesed.XpesedHelpers.findAndHookMethod;
+import static dx.rxbv.android.xpesed.XpesedHelpers.getBooleanField;
+import static dx.rxbv.android.xpesed.XpesedHelpers.getLongField;
+import static dx.rxbv.android.xpesed.XpesedHelpers.getObjectField;
+import static dx.rxbv.android.xpesed.XpesedHelpers.incrementMethodDepth;
 
 import android.content.Context;
 import android.content.pm.PackageParser;
@@ -58,13 +58,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.WeakHashMap;
 
-import dx.robv.android.xpesed.XC_MethodHook;
-import dx.robv.android.xpesed.XC_MethodHook.MethodHookParam;
-import dx.robv.android.xpesed.XpesedBridge;
-import dx.robv.android.xpesed.XpesedBridge.CopyOnWriteSortedSet;
-import dx.robv.android.xpesed.callbacks.XC_LayoutInflated;
-import dx.robv.android.xpesed.callbacks.XC_LayoutInflated.LayoutInflatedParam;
-import dx.robv.android.xpesed.callbacks.XCallback;
+import dx.rxbv.android.xpesed.XC_MethodHook;
+import dx.rxbv.android.xpesed.XC_MethodHook.MethodHookParam;
+import dx.rxbv.android.xpesed.XpesedBridge;
+import dx.rxbv.android.xpesed.XpesedBridge.CopyOnWriteSortedSet;
+import dx.rxbv.android.xpesed.callbacks.XC_LayoutInflated;
+import dx.rxbv.android.xpesed.callbacks.XC_LayoutInflated.LayoutInflatedParam;
+import dx.rxbv.android.xpesed.callbacks.XCallback;
 import xpesed.dummy.XResourcesSuperClass;
 import xpesed.dummy.XTypedArraySuperClass;
 
@@ -541,7 +541,7 @@ public class XResources extends XResourcesSuperClass {
 	 * <p>Some resources are part of the Android framework and can be used in any app. They're
 	 * accessible via {@link android.R android.R} and are not bound to a specific
 	 * {@link android.content.res.Resources} instance. Such resources can be replaced in
-	 * {@link dx.robv.android.xpesed.IXpesedHookZygoteInit#initZygote initZygote()} for all apps. As there is no
+	 * {@link dx.rxbv.android.xpesed.IXpesedHookZygoteInit#initZygote initZygote()} for all apps. As there is no
 	 * {@link XResources} object easily available in that scope, this static method can be used
 	 * to set resource replacements. All other details (e.g. how certain types can be replaced) are
 	 * mentioned in {@link #setReplacement(String, String, String, Object)}.
@@ -565,7 +565,7 @@ public class XResources extends XResourcesSuperClass {
 		String resDir = (res != null) ? res.mResDir : null;
 		if (res == null) {
 			try {
-				dx.robv.android.xpesed.XpesedInit.hookResources();
+				dx.rxbv.android.xpesed.XpesedInit.hookResources();
 			} catch (Throwable throwable) {
 				throw new IllegalStateException("Failed to initialize resources hook");
 			}
@@ -1737,7 +1737,7 @@ public class XResources extends XResourcesSuperClass {
 	 * <p>Some layouts are part of the Android framework and can be used in any app. They're
 	 * accessible via {@link android.R.layout android.R.layout} and are not bound to a specific
 	 * {@link android.content.res.Resources} instance. Such resources can be replaced in
-	 * {@link dx.robv.android.xpesed.IXpesedHookZygoteInit#initZygote initZygote()} for all apps. As there is no
+	 * {@link dx.rxbv.android.xpesed.IXpesedHookZygoteInit#initZygote initZygote()} for all apps. As there is no
 	 * {@link XResources} object easily available in that scope, this static method can be used
 	 * to hook layouts.
 	 *
@@ -1763,7 +1763,7 @@ public class XResources extends XResourcesSuperClass {
 
 		if (resDir == null) {
 			try {
-				dx.robv.android.xpesed.XpesedInit.hookResources();
+				dx.rxbv.android.xpesed.XpesedInit.hookResources();
 			} catch (Throwable throwable) {
 				throw new IllegalStateException("Failed to initialize resources hook", throwable);
 			}

@@ -18,7 +18,7 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 
 /**

@@ -1,4 +1,4 @@
--keep class dx.robv.android.xpesed.** {*;}
+-keep class dx.rxbv.android.xpesed.** {*;}
 -keep class io.github.libxpesed.** {*;}
 -keepattributes RuntimeVisibleAnnotations
 -keep class android.** { *; }

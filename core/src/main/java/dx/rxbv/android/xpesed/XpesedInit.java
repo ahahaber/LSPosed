@@ -18,16 +18,16 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 import static org.lsposed.lspd.core.ApplicationServiceClient.serviceClient;
 import static org.lsposed.lspd.deopt.PrebuiltMethodsDeopter.deoptResourceMethods;
-import static dx.robv.android.xpesed.XpesedBridge.hookAllMethods;
-import static dx.robv.android.xpesed.XpesedHelpers.callMethod;
-import static dx.robv.android.xpesed.XpesedHelpers.findAndHookMethod;
-import static dx.robv.android.xpesed.XpesedHelpers.getObjectField;
-import static dx.robv.android.xpesed.XpesedHelpers.getParameterIndexByType;
-import static dx.robv.android.xpesed.XpesedHelpers.setStaticObjectField;
+import static dx.rxbv.android.xpesed.XpesedBridge.hookAllMethods;
+import static dx.rxbv.android.xpesed.XpesedHelpers.callMethod;
+import static dx.rxbv.android.xpesed.XpesedHelpers.findAndHookMethod;
+import static dx.rxbv.android.xpesed.XpesedHelpers.getObjectField;
+import static dx.rxbv.android.xpesed.XpesedHelpers.getParameterIndexByType;
+import static dx.rxbv.android.xpesed.XpesedHelpers.setStaticObjectField;
 
 import android.app.ActivityThread;
 import android.content.pm.ApplicationInfo;
@@ -58,8 +58,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import dx.robv.android.xpesed.callbacks.XC_InitPackageResources;
-import dx.robv.android.xpesed.callbacks.XCallback;
+import dx.rxbv.android.xpesed.callbacks.XC_InitPackageResources;
+import dx.rxbv.android.xpesed.callbacks.XCallback;
 import hidden.HiddenApiBridge;
 
 public final class XpesedInit {
@@ -272,22 +272,22 @@ public final class XpesedInit {
 
                 final Object moduleInstance = moduleClass.newInstance();
 
-                if (moduleInstance instanceof dx.robv.android.xpesed.IXpesedHookZygoteInit) {
-                    dx.robv.android.xpesed.IXpesedHookZygoteInit.StartupParam param = new dx.robv.android.xpesed.IXpesedHookZygoteInit.StartupParam();
+                if (moduleInstance instanceof dx.rxbv.android.xpesed.IXpesedHookZygoteInit) {
+                    dx.rxbv.android.xpesed.IXpesedHookZygoteInit.StartupParam param = new dx.rxbv.android.xpesed.IXpesedHookZygoteInit.StartupParam();
                     param.modulePath = apk;
                     param.startsSystemServer = startsSystemServer;
-                    ((dx.robv.android.xpesed.IXpesedHookZygoteInit) moduleInstance).initZygote(param);
+                    ((dx.rxbv.android.xpesed.IXpesedHookZygoteInit) moduleInstance).initZygote(param);
                     count++;
                 }
 
-                if (moduleInstance instanceof dx.robv.android.xpesed.IXpesedHookLoadPackage) {
-                    XpesedBridge.hookLoadPackage(new dx.robv.android.xpesed.IXpesedHookLoadPackage.Wrapper((dx.robv.android.xpesed.IXpesedHookLoadPackage) moduleInstance));
+                if (moduleInstance instanceof dx.rxbv.android.xpesed.IXpesedHookLoadPackage) {
+                    XpesedBridge.hookLoadPackage(new dx.rxbv.android.xpesed.IXpesedHookLoadPackage.Wrapper((dx.rxbv.android.xpesed.IXpesedHookLoadPackage) moduleInstance));
                     count++;
                 }
 
-                if (moduleInstance instanceof dx.robv.android.xpesed.IXpesedHookInitPackageResources) {
+                if (moduleInstance instanceof dx.rxbv.android.xpesed.IXpesedHookInitPackageResources) {
                     hookResources();
-                    XpesedBridge.hookInitPackageResources(new dx.robv.android.xpesed.IXpesedHookInitPackageResources.Wrapper((dx.robv.android.xpesed.IXpesedHookInitPackageResources) moduleInstance));
+                    XpesedBridge.hookInitPackageResources(new dx.rxbv.android.xpesed.IXpesedHookInitPackageResources.Wrapper((dx.rxbv.android.xpesed.IXpesedHookInitPackageResources) moduleInstance));
                     count++;
                 }
             } catch (Throwable t) {
@@ -311,7 +311,7 @@ public final class XpesedInit {
         }
         var librarySearchPath = sb.toString();
 
-        var initLoader = dx.robv.android.xpesed.XpesedInit.class.getClassLoader();
+        var initLoader = dx.rxbv.android.xpesed.XpesedInit.class.getClassLoader();
         var mcl = LspModuleClassLoader.loadApk(apk, file.preLoadedDexes, librarySearchPath, initLoader);
 
         try {

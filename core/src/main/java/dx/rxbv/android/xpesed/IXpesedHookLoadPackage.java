@@ -1,9 +1,9 @@
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 import android.app.Application;
 
-import dx.robv.android.xpesed.callbacks.XC_LoadPackage;
-import dx.robv.android.xpesed.callbacks.XC_LoadPackage.LoadPackageParam;
+import dx.rxbv.android.xpesed.callbacks.XC_LoadPackage;
+import dx.rxbv.android.xpesed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 /**
  * Get notified when an app ("Android package") is loaded.
@@ -25,8 +25,8 @@ public interface IXpesedHookLoadPackage extends IXpesedMod {
 
     /** @hide */
     final class Wrapper extends XC_LoadPackage {
-        private final dx.robv.android.xpesed.IXpesedHookLoadPackage instance;
-        public Wrapper(dx.robv.android.xpesed.IXpesedHookLoadPackage instance) {
+        private final dx.rxbv.android.xpesed.IXpesedHookLoadPackage instance;
+        public Wrapper(dx.rxbv.android.xpesed.IXpesedHookLoadPackage instance) {
             this.instance = instance;
         }
         @Override

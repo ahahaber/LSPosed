@@ -1,15 +1,15 @@
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 /**
  * Hook the initialization of Zygote process(es), from which all the apps are forked.
  *
  * <p>Implement this interface in your module's main class in order to be notified when Android is
- * starting up. In {@link dx.robv.android.xpesed.IXpesedHookZygoteInit}, you can modify objects and place hooks that should
+ * starting up. In {@link dx.rxbv.android.xpesed.IXpesedHookZygoteInit}, you can modify objects and place hooks that should
  * be applied for every app. Only the Android framework/system classes are available at that point
  * in time. Use {@code null} as class loader for {@link XpesedHelpers#findAndHookMethod(String, ClassLoader, String, Object...)}
  * and its variants.
  *
- * <p>If you want to hook one/multiple specific apps, use {@link dx.robv.android.xpesed.IXpesedHookLoadPackage} instead.
+ * <p>If you want to hook one/multiple specific apps, use {@link dx.rxbv.android.xpesed.IXpesedHookLoadPackage} instead.
  */
 public interface IXpesedHookZygoteInit extends IXpesedMod {
     /**

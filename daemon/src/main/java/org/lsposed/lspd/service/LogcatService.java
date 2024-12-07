@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 
 public class LogcatService implements Runnable {
-    private static final String TAG = "LSPosedLogcat";
+    private static final String TAG = "Logcat";
     private static final int mode = ParcelFileDescriptor.MODE_WRITE_ONLY |
             ParcelFileDescriptor.MODE_CREATE |
             ParcelFileDescriptor.MODE_TRUNCATE |
@@ -96,9 +96,10 @@ public class LogcatService implements Runnable {
 
     @Override
     public void run() {
-        Log.i(TAG, "start running");
-        runLogcat();
-        Log.i(TAG, "stopped");
+        // 魔改去日志
+//        Log.i(TAG, "start running");
+//        runLogcat();
+//        Log.i(TAG, "stopped");
     }
 
     @SuppressWarnings("unused")

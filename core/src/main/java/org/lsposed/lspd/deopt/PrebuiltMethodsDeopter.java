@@ -31,7 +31,7 @@ import org.lsposed.lspd.util.Utils;
 import java.lang.reflect.Executable;
 import java.util.Arrays;
 
-import dx.robv.android.xpesed.XpesedHelpers;
+import dx.rxbv.android.xpesed.XpesedHelpers;
 
 public class PrebuiltMethodsDeopter {
 

@@ -18,10 +18,10 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
-import dx.robv.android.xpesed.services.BaseService;
-import dx.robv.android.xpesed.services.DirectAccessService;
+import dx.rxbv.android.xpesed.services.BaseService;
+import dx.rxbv.android.xpesed.services.DirectAccessService;
 
 /**
  * A helper to work with (or without) SELinux, abstracting much of its big complexity.

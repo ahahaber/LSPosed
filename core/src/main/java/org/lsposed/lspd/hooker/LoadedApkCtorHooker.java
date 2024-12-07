@@ -26,7 +26,7 @@ import android.util.Log;
 
 import org.lsposed.lspd.util.Hookers;
 
-import dx.robv.android.xpesed.XpesedHelpers;
+import dx.rxbv.android.xpesed.XpesedHelpers;
 import io.github.libxpesed.api.XpesedInterface;
 import io.github.libxpesed.api.annotations.AfterInvocation;
 import io.github.libxpesed.api.annotations.XpesedHooker;
@@ -46,12 +46,12 @@ public class LoadedApkCtorHooker implements XpesedInterface.Hooker {
             Object mAppDir = XpesedHelpers.getObjectField(loadedApk, "mAppDir");
             Hookers.logD("LoadedApk#<init> ends: " + mAppDir);
 
-            if (!dx.robv.android.xpesed.XpesedInit.disableResources) {
+            if (!dx.rxbv.android.xpesed.XpesedInit.disableResources) {
                 XResources.setPackageNameForResDir(packageName, loadedApk.getResDir());
             }
 
             if (packageName.equals("android")) {
-                if (dx.robv.android.xpesed.XpesedInit.startsSystemServer) {
+                if (dx.rxbv.android.xpesed.XpesedInit.startsSystemServer) {
                     Hookers.logD("LoadedApk#<init> is android, skip: " + mAppDir);
                     return;
                 } else {
@@ -59,7 +59,7 @@ public class LoadedApkCtorHooker implements XpesedInterface.Hooker {
                 }
             }
 
-            if (!dx.robv.android.xpesed.XpesedInit.loadedPackagesInProcess.add(packageName)) {
+            if (!dx.rxbv.android.xpesed.XpesedInit.loadedPackagesInProcess.add(packageName)) {
                 Hookers.logD("LoadedApk#<init> has been loaded before, skip: " + mAppDir);
                 return;
             }

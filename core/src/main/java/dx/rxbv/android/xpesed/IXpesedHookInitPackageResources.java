@@ -1,9 +1,9 @@
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 import android.content.res.XResources;
 
-import dx.robv.android.xpesed.callbacks.XC_InitPackageResources;
-import dx.robv.android.xpesed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
+import dx.rxbv.android.xpesed.callbacks.XC_InitPackageResources;
+import dx.rxbv.android.xpesed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 
 /**
  * Get notified when the resources for an app are initialized.
@@ -24,8 +24,8 @@ public interface IXpesedHookInitPackageResources extends IXpesedMod {
 
     /** @hide */
     final class Wrapper extends XC_InitPackageResources {
-        private final dx.robv.android.xpesed.IXpesedHookInitPackageResources instance;
-        public Wrapper(dx.robv.android.xpesed.IXpesedHookInitPackageResources instance) {
+        private final dx.rxbv.android.xpesed.IXpesedHookInitPackageResources instance;
+        public Wrapper(dx.rxbv.android.xpesed.IXpesedHookInitPackageResources instance) {
             this.instance = instance;
         }
         @Override

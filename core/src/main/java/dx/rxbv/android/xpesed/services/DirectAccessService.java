@@ -18,7 +18,7 @@
  * Copyright (C) 2021 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed.services;
+package dx.rxbv.android.xpesed.services;
 
 import java.io.BufferedInputStream;
 import java.io.File;

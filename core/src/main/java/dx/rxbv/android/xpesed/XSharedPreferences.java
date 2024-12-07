@@ -18,7 +18,7 @@
  * Copyright (C) 2021 - 2022 LSPosed Contributors
  */
 
-package dx.robv.android.xpesed;
+package dx.rxbv.android.xpesed;
 
 import static org.lsposed.lspd.core.ApplicationServiceClient.serviceClient;
 
@@ -53,7 +53,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import dx.robv.android.xpesed.services.FileResult;
+import dx.rxbv.android.xpesed.services.FileResult;
 
 /**
  * This class is basically the same as SharedPreferencesImpl from AOSP, but
@@ -161,7 +161,7 @@ public final class XSharedPreferences implements SharedPreferences {
      */
     public XSharedPreferences(String packageName, String prefFileName) {
         boolean newModule = false;
-        var m = dx.robv.android.xpesed.XpesedInit.getLoadedModules().getOrDefault(packageName, Optional.empty());
+        var m = dx.rxbv.android.xpesed.XpesedInit.getLoadedModules().getOrDefault(packageName, Optional.empty());
         if (m.isPresent()) {
             boolean isModule = false;
             int xposedminversion = -1;

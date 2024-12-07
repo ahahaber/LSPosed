@@ -1,6 +1,6 @@
 package org.lsposed.lspd.util;
 
-import static dx.robv.android.xpesed.XpesedBridge.TAG;
+import static dx.rxbv.android.xpesed.XpesedBridge.TAG;
 
 import android.os.Build;
 import android.os.SharedMemory;
